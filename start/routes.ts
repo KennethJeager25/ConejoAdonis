@@ -30,4 +30,5 @@ Route.group(()=>{
   Route.delete('deleteInfo','TemperaturasController.EliminarTodo')
   Route.get('showDato','TemperaturasController.MostrarTemperatura')
   Route.get('countDato','TemperaturasController.ContarRegistros')
+  Route.get('show10Dato','TemperaturasController.Ultimos10Registros')
 }).prefix('temp');

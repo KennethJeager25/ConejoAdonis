@@ -27,7 +27,7 @@ export default class TemperaturasController {
 
         try{
             const temp = await Temperatura.all()
-            response.ok({message:"datos",temp})
+            response.ok({temp})
         }
         catch(error){
             response.badRequest({message:"error al mostrar"})

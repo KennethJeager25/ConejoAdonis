@@ -28,4 +28,5 @@ Route.group(()=>{
   Route.post('insertInfo','TemperaturasController.InsertAllDataSensor')
   Route.get('showInfo','TemperaturasController.MostrarInfo')
   Route.delete('deleteInfo','TemperaturasController.EliminarTodo')
+  Route.get('showDato','TemperaturasController.MostrarTemperatura')
 }).prefix('temp');

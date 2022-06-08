@@ -6,8 +6,9 @@ import Database from '@ioc:Adonis/Lucid/Database';
 
 export default class TemperaturasController {
 
-    public async InsertAllDataSensor({response, request}:HttpContextContract) {
+    public async InsertAllDataSensor({response}:HttpContextContract) {
 
+        try{
             await Database.rawQuery("DELETE FROM temperaturas")
             await axios.get('https://thingspeak.com/channels/935349/field/1.json')
                 .then((r) => {
@@ -17,6 +18,10 @@ export default class TemperaturasController {
                 response.badRequest({message:"no existen registros"})
             });
             response.ok({message:"Registrados correctamente"})
+        }
+        catch(error){
+            response.badRequest({message:"error al registrar"})
+        }
     }
     public async MostrarInfo({response}:HttpContextContract){
 
@@ -38,6 +43,18 @@ export default class TemperaturasController {
         catch(error){
             response.badRequest({message:"No existen datos"})
         }
+    }
+
+    public async MostrarTemperatura({response}){
+
+        try{
+            const temp = await Database.rawQuery("SELECT * FROM temperaturas ORDER BY id DESC LIMIT 1")
+            response.ok({message:"Dato existente",data:temp})
+        }
+        catch(error){
+            response.badRequest({message:"No existen datos"})
+        }
+
     }
 
 

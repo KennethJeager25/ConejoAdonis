@@ -45,7 +45,7 @@ export default class TemperaturasController {
         }
     }
 
-    public async MostrarTemperatura({response}:HttpContextContract){
+    public async MostrarUltimoRegistro({response}:HttpContextContract){
 
         try{
             const tempe = await Database.rawQuery("SELECT * FROM temperaturas ORDER BY id DESC LIMIT 1")
@@ -56,17 +56,6 @@ export default class TemperaturasController {
         }
 
     }
-
-    public async ContarRegistros({response}:HttpContextContract){
-        try{
-            const temp = await Database.rawQuery("SELECT count(*) FROM temperaturas")
-            response.ok({message:"Dato existente",data:temp})
-        }
-        catch(error){
-            response.badRequest({message:"No existen datos"})
-        }
-    }
-
     public async Ultimos10Registros({response}:HttpContextContract){
         try{
             const temperatura = await Database.rawQuery("SELECT * FROM temperaturas ORDER BY id DESC LIMIT 10")
@@ -76,6 +65,16 @@ export default class TemperaturasController {
             response.badRequest({message:"No existen datos"})
         }
     }
+
+    // public async ContarRegistros({response}:HttpContextContract){
+    //     try{
+    //         const temp = await Database.rawQuery("SELECT count(*) FROM temperaturas")
+    //         response.ok({message:"Dato existente",data:temp})
+    //     }
+    //     catch(error){
+    //         response.badRequest({message:"No existen datos"})
+    //     }
+    // }
 
 
 }

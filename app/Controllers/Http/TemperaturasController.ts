@@ -37,7 +37,7 @@ export default class TemperaturasController {
     public async EliminarTodo({response}:HttpContextContract){
 
         try{
-            await Database.rawQuery("DELETE * FROM Temperaturas")
+            await Database.rawQuery("DELETE FROM temperaturas")
             response.ok({message:"Eliminado correctamente"})
         }
         catch(error){

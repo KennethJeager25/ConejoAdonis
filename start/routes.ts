@@ -28,7 +28,7 @@ Route.group(()=>{
   Route.post('insertInfo','TemperaturasController.InsertAllDataSensor')
   Route.get('showInfo','TemperaturasController.MostrarInfo')
   Route.delete('deleteInfo','TemperaturasController.EliminarTodo')
-  Route.get('finalDato','TemperaturasController.MostrarTemperatura')
+  Route.get('finalDato','TemperaturasController.MostrarUltimoRegistro')
   Route.get('countDato','TemperaturasController.ContarRegistros')
   Route.get('show10Dato','TemperaturasController.Ultimos10Registros')
 }).prefix('temp');

@@ -11,9 +11,6 @@ export default class Temperatura extends BaseModel {
   @column()
   public field1: string
 
-  @column()
-  public created_at: string
-
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
